@@ -72,6 +72,21 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    @Test
+    public void get_order_value_will_return_correct_value_for_list_of_item_names(){
+        createRestaurant("Pizza Express", "Noida");
+        List<String> orderNames = new ArrayList<>();
+        orderNames.add("Sweet corn soup");
+        orderNames.add("Vegetable lasagne");
+        assertEquals(388, restaurant.getOrderValue(orderNames));
+    }
 
+    @Test
+    public void get_order_value_will_return_different_value_for_list_of_item_names(){
+        createRestaurant("Red Chilli", "Noida");
+        List<String> orderNames = new ArrayList<>();
+        orderNames.add("Sweet corn soup");
+        assertNotEquals(388, restaurant.getOrderValue(orderNames));
+    }
 
 }
